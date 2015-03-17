@@ -2,7 +2,6 @@
 using ExternalService.Time;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConsoleApp.Handler;
-using ExternalService;
 
 namespace SysHandler.Unit.Test
 {
