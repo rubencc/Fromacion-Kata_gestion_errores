@@ -12,7 +12,7 @@ namespace SyncApp.Handler
     {
         protected readonly ITimeService timeService;
         private readonly string[] cultures;
-        private readonly string[] sats;
+        protected string[] sats;
         private readonly DateTime finishMissionDate;
         public long LastSyncTime { get; set; }
 

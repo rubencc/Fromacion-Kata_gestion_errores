@@ -8,3 +8,4 @@ G:\Fromacion-Kata_gestion_errores\ConsoleApp\ConsoleApp\bin\Debug\ExternalServic
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\ConsoleApp\bin\Debug\SyncApp.pdb
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.exe
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.pdb
+G:\Fromacion-Kata_gestion_errores\ConsoleApp\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache

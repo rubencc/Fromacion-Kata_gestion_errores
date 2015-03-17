@@ -78,5 +78,13 @@ namespace SysHandler.Unit.Test
             Assert.IsTrue(result, "Fallo en la sincronizacion");
             Assert.IsTrue(lastSyncTime != 0, "No se ha podido sincronizar");
         }
+
+        [TestMethod]
+        public void Obtener_Lag()
+        {
+            float result = this.handler.GetLag();
+
+            Assert.IsTrue(result != 0);
+        }
     }
 }

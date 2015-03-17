@@ -20,7 +20,7 @@ namespace ConsoleApp.Handler
 
         public override float GetLag()
         {
-            throw new NotImplementedException();
+            return this.timeService.GetLag(this.sats)[0];
         }
     }
 }
