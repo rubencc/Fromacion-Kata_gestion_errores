@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ExternalService.Time;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -93,8 +94,54 @@ namespace ExternalService.Unit.Test.Time
             catch (Exception ex)
             {
                 Assert.IsNotNull(ex, "Nulo");
-                Assert.IsTrue(ex.GetType() == typeof(Exception));
+                Assert.IsTrue(ex.GetType() == typeof(ArithmeticException));
             }
+        }
+
+        [TestMethod]
+        public void Obtener_Lag_hispasat()
+        {
+            try
+            {
+                string[] sats = new string[] { "XRT1033", "hispasat", "pegaso", "astra" };
+                float[] lag = this.service.GetLag(sats);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(UnauthorizedAccessException));
+            }
+
+        }
+
+        [TestMethod]
+        public void Obtener_Lag_dos_satelites()
+        {
+            try
+            {
+                string[] sats = new string[] { "pegaso", "astra" };
+                float[] lag = this.service.GetLag(sats);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(InsuficientConstelationMembersException));
+            }
+
+        }
+
+        [TestMethod]
+        public void Obtener_Lag_tres_satelites()
+        {
+            try
+            {
+                string[] sats = new string[] { "XRT1033", "pegaso", "astra" };
+                for (int i = 0; i < 100; i++)
+                    this.service.GetLag(sats);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(InsufficientMemoryException));
+            }
+
         }
 
         private void Assert_Culture(string time, CultureInfo culture)

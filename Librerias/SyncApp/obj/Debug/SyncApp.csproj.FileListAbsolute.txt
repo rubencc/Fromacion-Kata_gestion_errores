@@ -1,0 +1,5 @@
+G:\Fromacion-Kata_gestion_errores\Librerias\libs\SyncApp.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\libs\SyncApp.pdb
+G:\Fromacion-Kata_gestion_errores\Librerias\SyncApp\obj\Debug\SyncApp.csprojResolveAssemblyReference.cache
+G:\Fromacion-Kata_gestion_errores\Librerias\SyncApp\obj\Debug\SyncApp.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\SyncApp\obj\Debug\SyncApp.pdb

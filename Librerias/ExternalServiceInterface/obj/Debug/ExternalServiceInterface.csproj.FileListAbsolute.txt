@@ -1,0 +1,5 @@
+G:\Fromacion-Kata_gestion_errores\Librerias\libs\ExternalServiceInterface.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\libs\ExternalServiceInterface.pdb
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalServiceInterface\obj\Debug\ExternalServiceInterface.csprojResolveAssemblyReference.cache
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalServiceInterface\obj\Debug\ExternalServiceInterface.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalServiceInterface\obj\Debug\ExternalServiceInterface.pdb

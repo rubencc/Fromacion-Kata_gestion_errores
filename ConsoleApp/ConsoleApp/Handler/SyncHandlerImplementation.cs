@@ -18,9 +18,9 @@ namespace ConsoleApp.Handler
             return this.timeService.GetDateTime();
         }
 
-        public string GetTimeForESA()
+        public override float GetLag()
         {
-            return string.Empty;
+            throw new NotImplementedException();
         }
     }
 }

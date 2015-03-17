@@ -1,0 +1,9 @@
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\bin\Debug\ExternalService.Unit.Test.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\bin\Debug\ExternalService.Unit.Test.pdb
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\bin\Debug\ExternalService.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\bin\Debug\ExternalServiceInterface.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\bin\Debug\ExternalServiceInterface.pdb
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\bin\Debug\ExternalService.pdb
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\obj\Debug\ExternalService.Unit.Test.csprojResolveAssemblyReference.cache
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\obj\Debug\ExternalService.Unit.Test.dll
+G:\Fromacion-Kata_gestion_errores\Librerias\ExternalService.Unit.Test\obj\Debug\ExternalService.Unit.Test.pdb
