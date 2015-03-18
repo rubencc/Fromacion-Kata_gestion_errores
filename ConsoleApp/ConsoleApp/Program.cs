@@ -1,4 +1,5 @@
 ﻿using ConsoleApp.Handler;
+using ConsoleApp.TimeWrapper;
 using ExternalService;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace ConsoleApp
         public static void Main(string[] args)
         {
 
-            synchandler = new SyncHandlerImplementation(new TimeService());
+            synchandler = new SyncHandlerImplementation(new TimeServiceWrapper());
             ConsoleKeyInfo key = new ConsoleKeyInfo();
             Console.WriteLine("Los satelites GPS no responden. Se va a intentar la sincronizacion con las estaciones en tierra.");
             Console.WriteLine("Esta operacion puede tardar unos minutos. En caso de fallo vuelva a intentarlo.");
@@ -26,7 +27,7 @@ namespace ConsoleApp
             Console.ReadKey();
             Console.Clear();
 
-            while(key.Key != ConsoleKey.Y)
+            while (key.Key != ConsoleKey.Y)
             {
                 Sync();
                 ShowZones();
@@ -37,17 +38,17 @@ namespace ConsoleApp
             }
 
             ByeBye();
-                             
+
         }
 
         private static void ShowZones()
-        {           
+        {
             Console.WriteLine("Hora en formato ruso: {0}", synchandler.GetTimeForРоскосмос());
             Console.WriteLine("Hora en formato japones: {0}", synchandler.GetTimeForJAXA());
             try
             {
                 Console.WriteLine("Hora en formato usa: {0}", synchandler.GetTimeForNASA());
-                Console.WriteLine("Hora en formato usa: {0}", synchandler.GetTimeForESA());
+                Console.WriteLine("Hora en formato esa: {0}", synchandler.GetTimeForESA());
             }
             catch (InvalidTimeZoneException)
             {
@@ -59,33 +60,47 @@ namespace ConsoleApp
         {
             bool syncronized = false;
             int percentage = 0;
+            int m = 0;
 
-            while(syncronized == false)
+            while (syncronized == false)
             {
 
-                for (int i = 0; i < 100; i++ )
+                for (int i = 0; i < 100; i++)
                 {
                     syncronized = synchandler.SyncWithExternalClock();
 
                     if (syncronized)
                     {
-                        Console.WriteLine("Sincronizando, espere: " + percentage + "%");
-                        System.Threading.Thread.Sleep(100);
+                        Console.WriteLine("Sincronizando, espere: " + percentage + "% - Fallos {0}", m);
+                        System.Threading.Thread.Sleep(75);
                         percentage += 1;
                         Console.Clear();
                     }
                     else
                     {
-                        Console.WriteLine("Sincronizando, espere: " + +percentage + "%");
-                        Console.WriteLine("Fallo en la sincronizacion. Pulse cualquier tecla para repetir.");
-                        percentage = 0;
-                        Console.ReadKey();
-                        Console.Clear();
-                        break;
+                        m++;
+                        syncronized = synchandler.SyncWithExternalClock();
+
+                        if (syncronized)
+                        {
+                            percentage += 1;
+                        }
+                        else
+                        {
+                            m++;
+                            i--;
+                        }
+
+                        //Console.WriteLine("Sincronizando, espere: " + +percentage + "%");
+                        //Console.WriteLine("Fallo en la sincronizacion. Pulse cualquier tecla para repetir.");
+                        //percentage = 0;
+                        //Console.ReadKey();
+                        //Console.Clear();
+                        //break;
                     }
-                    
+
                 }
-                   
+
             }
 
             Console.WriteLine("Sincronizado a las {0}", new DateTime(synchandler.LastSyncTime));
@@ -98,7 +113,7 @@ namespace ConsoleApp
             Console.WriteLine(" ----------------------- ");
             Console.WriteLine();
             Console.WriteLine(Messages.ByeByeEN());
-            Console.ReadKey();            
+            Console.ReadKey();
         }
     }
 }

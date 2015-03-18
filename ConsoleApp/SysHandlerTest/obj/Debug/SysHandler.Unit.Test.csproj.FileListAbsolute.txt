@@ -1,4 +1,3 @@
-G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\obj\Debug\SysHandler.Unit.Test.csprojResolveAssemblyReference.cache
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\SysHandler.Unit.Test.dll
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\SysHandler.Unit.Test.pdb
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\ConsoleApp.exe
@@ -9,5 +8,6 @@ G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\ConsoleApp
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\ExternalService.pdb
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\ExternalServiceInterface.pdb
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\bin\Debug\SyncApp.pdb
+G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\obj\Debug\SysHandler.Unit.Test.csprojResolveAssemblyReference.cache
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\obj\Debug\SysHandler.Unit.Test.dll
 G:\Fromacion-Kata_gestion_errores\ConsoleApp\SysHandlerTest\obj\Debug\SysHandler.Unit.Test.pdb

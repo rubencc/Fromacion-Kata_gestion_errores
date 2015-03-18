@@ -1,5 +1,7 @@
 ﻿using System;
+using ConsoleApp.TimeWrapper;
 using ExternalService.Time;
+using ExternalServiceInterface.Time;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConsoleApp.Handler;
 
@@ -14,7 +16,7 @@ namespace SysHandler.Unit.Test
         [TestInitialize]
         public void Setup_Test()
         {
-            TimeService service = new TimeService();
+            ITimeService service = new TimeServiceWrapper();
             this.handler = new SyncHandlerImplementation(service);
         }
 

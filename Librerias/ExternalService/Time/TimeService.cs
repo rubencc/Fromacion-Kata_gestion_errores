@@ -94,7 +94,7 @@ namespace ExternalService.Time
 
             for (int i = 0; i < count; i++)
             {
-                if (rd.NextDouble() < 1)
+                if (rd.NextDouble() < 0.1)
                     throw new InsufficientMemoryException();
 
                 lag[i] = (float)rd.NextDouble() * 10;
