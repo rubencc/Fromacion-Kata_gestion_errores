@@ -1,4 +1,5 @@
 ﻿using ConsoleApp.Handler;
+using ConsoleApp.Logger;
 using ConsoleApp.TimeWrapper;
 using ExternalService;
 using System;
@@ -14,11 +15,12 @@ namespace ConsoleApp
     {
 
         private static SyncApp.Handler.SyncAbstract synchandler;
+        private static ILogger logger;
 
         public static void Main(string[] args)
         {
-
-            synchandler = new SyncHandlerImplementation(new TimeServiceWrapper());
+            logger = new TracerLogger();
+            synchandler = new SyncHandlerImplementation(new TimeServiceWrapper(logger));
             ConsoleKeyInfo key = new ConsoleKeyInfo();
             Console.WriteLine("Los satelites GPS no responden. Se va a intentar la sincronizacion con las estaciones en tierra.");
             Console.WriteLine("Esta operacion puede tardar unos minutos. En caso de fallo vuelva a intentarlo.");
@@ -50,9 +52,10 @@ namespace ConsoleApp
                 Console.WriteLine("Hora en formato usa: {0}", synchandler.GetTimeForNASA());
                 Console.WriteLine("Hora en formato esa: {0}", synchandler.GetTimeForESA());
             }
-            catch (InvalidTimeZoneException)
+            catch (Exception ex)
             {
-                Console.WriteLine("Fallo al conseguir la hora");
+                logger.WriteLogError("Fallo al conseguir la hora", ex.Message == null ? String.Empty : ex.Message);
+                Console.WriteLine();
             }
         }
 
@@ -71,14 +74,14 @@ namespace ConsoleApp
 
                     if (syncronized)
                     {
-                        Console.WriteLine("Sincronizando, espere: " + percentage + "% - Fallos {0}", m);
+                        Console.WriteLine("Sincronizando, espere: " + percentage + "%");
                         System.Threading.Thread.Sleep(75);
                         percentage += 1;
                         Console.Clear();
                     }
                     else
                     {
-                        m++;
+                        logger.WriteLogWarning("Fallo al sincronizar");
                         syncronized = synchandler.SyncWithExternalClock();
 
                         if (syncronized)
@@ -87,16 +90,9 @@ namespace ConsoleApp
                         }
                         else
                         {
-                            m++;
+                            logger.WriteLogWarning("Fallo al sincronizar");
                             i--;
                         }
-
-                        //Console.WriteLine("Sincronizando, espere: " + +percentage + "%");
-                        //Console.WriteLine("Fallo en la sincronizacion. Pulse cualquier tecla para repetir.");
-                        //percentage = 0;
-                        //Console.ReadKey();
-                        //Console.Clear();
-                        //break;
                     }
 
                 }

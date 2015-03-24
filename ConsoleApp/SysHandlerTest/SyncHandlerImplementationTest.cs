@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApp.Logger;
 using ConsoleApp.TimeWrapper;
 using ExternalService.Time;
 using ExternalServiceInterface.Time;
@@ -16,7 +17,7 @@ namespace SysHandler.Unit.Test
         [TestInitialize]
         public void Setup_Test()
         {
-            ITimeService service = new TimeServiceWrapper();
+            ITimeService service = new TimeServiceWrapper(new TracerLogger());
             this.handler = new SyncHandlerImplementation(service);
         }
 

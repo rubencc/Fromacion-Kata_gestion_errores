@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Logger;
 using ExternalService.Time;
 using ExternalServiceInterface.Time;
 
@@ -12,10 +13,12 @@ namespace ConsoleApp.TimeWrapper
     public class TimeServiceWrapper : ITimeService
     {
         private readonly TimeService service;
+        private readonly ILogger logger;
 
-        public TimeServiceWrapper()
+        public TimeServiceWrapper(ILogger logger)
         {
             this.service = new TimeService();
+            this.logger = logger;
         }
 
         public DateTime GetDateTime()
@@ -24,8 +27,9 @@ namespace ConsoleApp.TimeWrapper
             {
                 return this.service.GetDateTime();
             }
-            catch
+            catch(Exception ex)
             {
+                this.logger.WriteLogWarning("En el metodo GetDateTime", ex.Message == null ? String.Empty : ex.Message);
                 DateTime date = new DateTime(this.service.GetTime());
                 return date;
             }
@@ -37,8 +41,9 @@ namespace ConsoleApp.TimeWrapper
             {
                 return this.service.GetLag(sats);
             }
-            catch
+            catch(Exception ex)
             {
+                this.logger.WriteLogWarning("En el metodo GetLag", ex.Message == null ? String.Empty : ex.Message);
                 return this.GetLag(sats);
             }
         }
@@ -49,6 +54,7 @@ namespace ConsoleApp.TimeWrapper
 
             if (culture.Name.Contains("en"))
             {
+                this.logger.WriteLogInfo("Switch culture to es-ES");
                 tempCulture = new CultureInfo("es-ES");
             }
             else
@@ -59,9 +65,7 @@ namespace ConsoleApp.TimeWrapper
             string stringDate = this.service.GetTime(tempCulture);
 
             DateTime date = DateTime.Parse(stringDate, tempCulture);
-
-            //DateTime newDate = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Millisecond);
-
+           
             return date.ToString(culture);
         }
 
